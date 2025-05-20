@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowDown } from "lucide-react"
-import Hero from "@/components/Hero"
+import { Hero } from "@/components/Hero"
 import Navbar from "@/components/navbar"
 import About from "@/components/About"
 import Contact from "@/components/Contact"

@@ -1,134 +1,79 @@
-"use client"
-
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import { ChevronRight } from "lucide-react"
 import logo from '../assets/logo.jpg'
-export default function Hero() {
-  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
-
+export function Hero() {
   return (
-    <div className="relative h-screen w-full bg-gradient-to-b from-navy-blue to-[#0a1425] overflow-hidden">
-      {/* Elegant Background Pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djZoNnYtNmgtNnptMC0zMHY2aDZ2LTZoLTZ6bTAgMTJ2NmgtMTJ2NmgxMnY2aDZ2LTZoMTJ2LTZoLTEydi02aC02em0tMTIgMHY2aC02di02aDZ6bTAgMTh2Nmg2di02aC02eiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
+    <section className="relative w-full overflow-hidden bg-[#0A1E3C] py-20 md:py-32">
+      {/* Background pattern */}
+      <div className="absolute inset-0 z-0 opacity-5">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#D4B982" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
       </div>
 
-      {/* Gold Accent Lines */}
-      <motion.div
-        initial={{ opacity: 0, width: 0 }}
-        animate={{ opacity: 1, width: "100%" }}
-        transition={{ duration: 1.5 }}
-        className="absolute top-[15%] h-[1px] bg-gradient-to-r from-transparent via-gold/70 to-transparent"
-      />
-      <motion.div
-        initial={{ opacity: 0, width: 0 }}
-        animate={{ opacity: 1, width: "100%" }}
-        transition={{ duration: 1.5, delay: 0.3 }}
-        className="absolute bottom-[15%] h-[1px] bg-gradient-to-r from-transparent via-gold/70 to-transparent"
-      />
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="flex flex-col items-center justify-center gap-12 text-center">
+          {/* Logo */}
+          <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-[#D4B982] md:h-40 md:w-40">
+            <img
+              src={logo}
+              alt="Digital Dental Lab Logo"
 
-      <div className="container mx-auto px-4 h-full flex flex-col justify-center">
-        <div className="max-w-6xl mx-auto">
-          {/* Logo and Content Section */}
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8 md:mb-0 w-40 md:w-52 h-auto relative"
-            >
-              <div className="relative w-full aspect-square bg-white/10 backdrop-blur-sm rounded-full p-3 border border-gold/30">
-                <div className="w-full h-full rounded-full overflow-hidden border-2 border-gold/20">
-                  {/* Placeholder for your logo - replace the src with your actual logo path */}
-                  <div className="w-full h-full flex items-center justify-center bg-navy-blue text-gold text-xl font-bold">
-                    <img src={logo} alt="" />
-                  </div>
-                </div>
-                <div className="absolute -inset-1 rounded-full border border-gold/20 opacity-50"></div>
-              </div>
-            </motion.div>
+              className="object-cover"
+            />
+          </div>
 
-            {/* Content */}
-            <div className="flex-1">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tight">
-                  Digital Dental <span className="text-gold">Laboratory</span>
-                </h1>
-                <div className="h-1 w-24 bg-gold mb-6 mt-2"></div>
-              </motion.div>
+          {/* Animated Text */}
+        <h1 className="text-4xl font-bold ">Digital Dental Lab</h1>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <p className="text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl">
-                  Innovación en odontología digital con la más avanzada tecnología de impresión 3D para resultados
-                  precisos y de alta calidad.
-                </p>
-              </motion.div>
+          {/* Tagline */}
+          <p className="max-w-2xl text-lg text-white/80 md:text-xl">
+            Precision craftsmanship meets cutting-edge technology for exceptional dental solutions
+          </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <a
-                  href="#contact"
-                  className="bg-gold hover:bg-gold/90 text-navy-blue font-medium py-3 px-8 rounded-md inline-flex items-center transition-all shadow-lg shadow-gold/20"
-                >
-                  Contáctanos
-                  <ChevronRight size={18} className="ml-2" />
-                </a>
-                <a
-                  href="#services"
-                  className="border border-gold/30 hover:border-gold bg-transparent hover:bg-navy-blue/50 text-gold font-medium py-3 px-8 rounded-md inline-flex items-center transition-all"
-                >
-                  Nuestros Servicios
-                  <ChevronRight size={18} className="ml-2" />
-                </a>
-              </motion.div>
-            </div>
+          {/* Animated Tooth Icon */}
+          <div className="tooth-animation my-6 h-20 w-20">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
+              <path
+                d="M50 10C60 10 70 15 75 25C80 35 85 50 80 65C75 80 65 90 50 90C35 90 25 80 20 65C15 50 20 35 25 25C30 15 40 10 50 10Z"
+                stroke="#D4B982"
+                strokeWidth="3"
+                className="animate-pulse"
+              />
+              <path
+                d="M50 20C55 20 60 25 60 35C60 45 55 50 50 50C45 50 40 45 40 35C40 25 45 20 50 20Z"
+                stroke="#D4B982"
+                strokeWidth="3"
+                className="animate-pulse"
+                style={{ animationDelay: "0.5s" }}
+              />
+            </svg>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col gap-4 sm:flex-row">
+            <button className="bg-[#D4B982] text-[#0A1E3C] hover:bg-[#D4B982]/90">Our Services</button>
+            <button  className="border-[#D4B982] text-white hover:bg-[#D4B982]/10 hover:text-white">
+              Contact Us
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Floating 3D Printing Elements (Decorative) */}
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 0.2, y: 0 }}
-        transition={{ duration: 1.5, delay: 0.7 }}
-        className="absolute bottom-0 right-0 pointer-events-none"
-      >
-        <svg
-          width="600"
-          height="400"
-          viewBox="0 0 600 400"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="opacity-20"
-        >
-          <path d="M300 50L500 350H100L300 50Z" stroke="url(#gold-gradient)" strokeWidth="2" />
-          <path d="M300 100L450 300H150L300 100Z" stroke="url(#gold-gradient)" strokeWidth="2" />
-          <path d="M300 150L400 250H200L300 150Z" stroke="url(#gold-gradient)" strokeWidth="2" />
-          <defs>
-            <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#D4AF37" />
-              <stop offset="50%" stopColor="#F9DF74" />
-              <stop offset="100%" stopColor="#D4AF37" />
-            </linearGradient>
-          </defs>
+      {/* Bottom wave */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+          <path
+            d="M0 120L48 110C96 100 192 80 288 70C384 60 480 60 576 65C672 70 768 80 864 85C960 90 1056 90 1152 85C1248 80 1344 70 1392 65L1440 60V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0Z"
+            fill="#D4B982"
+            fillOpacity="0.1"
+          />
         </svg>
-      </motion.div>
-    </div>
+      </div>
+    </section>
   )
 }
