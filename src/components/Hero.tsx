@@ -32,7 +32,13 @@ export function Hero() {
     }[] = []
 
     const createParticles = () => {
-      for (let i = 0; i < 100; i++) {
+      // Clear existing particles
+      particles.length = 0
+
+      // Calculate number of particles based on screen width
+      const particleCount = window.innerWidth < 768 ? 40 : 100
+
+      for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -67,6 +73,11 @@ export function Hero() {
     const handleResize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
+
+      // Clear the canvas before recreating particles
+      ctx?.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Recreate particles with appropriate count
       createParticles()
     }
 
@@ -76,6 +87,7 @@ export function Hero() {
 
     return () => {
       window.removeEventListener("resize", handleResize)
+      particles.length = 0 // Clear particles array
     }
   }, [])
 
@@ -89,14 +101,12 @@ export function Hero() {
   }
 
   const handleWpp = () => {
-    const phoneNumber = "59894492064" // Replace with your phone number
-    const message = "Hola, quisiera consultar sobre sus servicios." // Replace with your message
+    const phoneNumber = "59894492064" 
+    const message = "Hola, quisiera consultar sobre sus servicios."
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
 
     window.open(url, "_blank")
   }
-
-
 
   return (
     <section className="relative w-full overflow-hidden bg-[#0a2f60] py-20 md:py-32 min-h-screen flex flex-col justify-between">
@@ -119,7 +129,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0 bg-gradient-radial from-[#0a2f60]/0 to-[#0a2f60]/90"></div>
 
       <div className="container relative z-10 mx-auto px-4 flex-grow flex flex-col justify-center">
-        <div className="flex flex-col items-center justify-center gap-12 text-center">
+        <div className="flex flex-col items-center justify-center gap-8 text-center">
           {/* Animated Logo */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -134,7 +144,7 @@ export function Hero() {
             <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#d5b997] to-[#d5b997]/60 blur-md animate-pulse"></div>
             <div className="relative h-32 w-32 overflow-hidden rounded-full md:h-40 md:w-40">
               <img
-                src={logo}
+                src={logo || "/placeholder.svg"}
                 alt="Digital Dental Lab Logo"
                 width={160}
                 height={160}
@@ -148,36 +158,38 @@ export function Hero() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="space-y-4"
+            className="space-y-6"
           >
-            <h1 className="bg-gradient-to-r from-[#d5b997] via-gold to-white bg-clip-text pb-4 text-4xl font-bold text-transparent md:text-5xl lg:text-6xl">
+            <h1 className="bg-gradient-to-r from-[#d5b997] via-gold to-white bg-clip-text text-5xl pb-4 font-bold text-transparent md:text-6xl lg:text-7xl">
               Digital Dental Lab
             </h1>
 
-            {/* FlipWordsDemo implementation */}
-            <div className="mx-auto flex h-12 items-center justify-center text-xl md:text-2xl">
-              <span className="font-semibold text-white">Especialistas en</span>
-            <FlipWordsDemo/>
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1">
+                <span className="font-semibold text-white text-xl md:text-2xl">Especialistas en</span>
+                <FlipWordsDemo />
+              </div>
             </div>
           </motion.div>
-
 
           {/* CTA Buttons with animation */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.6 }}
-            className="flex flex-col gap-4 sm:flex-row"
+            className="flex flex-col gap-4 sm:flex-row mt-4"
           >
-            <Link to="/servicios"> 
-             <Button  className="group bg-[#d5b997] text-[#0a2f60] hover:bg-[#d5b997]/90">
-              Nuestros Servicios
-              <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <Link to="/servicios">
+              <Button className="group bg-[#d5b997] text-[#0a2f60] hover:bg-[#d5b997]/90">
+                Nuestros Servicios
+                <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
             </Link>
-          
-            <Button variant="outline" className="border-[#d5b997] text-black hover:bg-[#d5b997]/10 hover:text-gold"
-             onClick={() => handleWpp()}
+
+            <Button
+              variant="outline"
+              className="border-[#d5b997] text-black hover:bg-[#d5b997]/10 hover:text-gold"
+              onClick={() => handleWpp()}
             >
               <Phone className="mr-2 h-4 w-4" />
               Consúltanos

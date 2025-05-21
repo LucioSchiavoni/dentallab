@@ -116,7 +116,7 @@ const ServicesContent = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {services.map((item, index) => {
           // Calculate delay based on index for staggered animations
-          const isVisible = scrollY > 100 + index * 50
+          const isVisible = index < 2 || scrollY > 100 + index * 50
 
           return (
             <div

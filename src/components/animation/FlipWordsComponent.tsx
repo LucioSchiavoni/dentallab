@@ -1,4 +1,4 @@
-import { FlipWords } from "../ui/flip-words";
+import { FlipWords } from "../ui/flip-words"
 
 export function FlipWordsDemo() {
   const words = [
@@ -17,14 +17,14 @@ export function FlipWordsDemo() {
     "Encerado diagnóstico",
     "Placas de blanqueamiento",
     "Placas de contención",
-    "Estampado de placas para alineadores"
-  ];
+    "Estampado de placas para alineadores",
+  ]
 
   return (
-    <div className="h-[40rem] flex justify-center items-center px-4">
-      <div className="text-4xl mx-auto font-bold text-[#d5b997]">
+    <div className="inline-flex items-center">
+      <div className="text-xl md:text-2xl font-bold text-[#d5b997]">
         <FlipWords words={words} />
       </div>
     </div>
-  );
+  )
 }
