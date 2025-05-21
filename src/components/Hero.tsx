@@ -6,6 +6,7 @@ import { FlipWordsDemo } from "./animation/FlipWordsComponent"
 import { Button } from "./ui/button"
 import { ChevronRight, Phone, ChevronDown } from "lucide-react"
 import logo from "../assets/logo.jpg"
+import { Link } from "react-router-dom"
 
 export function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -87,6 +88,14 @@ export function Hero() {
     })
   }
 
+  const handleWpp = () => {
+    const phoneNumber = "59894492064" // Replace with your phone number
+    const message = "Hola, quisiera consultar sobre sus servicios." // Replace with your message
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
+
+    window.open(url, "_blank")
+  }
+
 
 
   return (
@@ -160,11 +169,16 @@ export function Hero() {
             transition={{ delay: 1.2, duration: 0.6 }}
             className="flex flex-col gap-4 sm:flex-row"
           >
-            <Button className="group bg-[#d5b997] text-[#0a2f60] hover:bg-[#d5b997]/90">
+            <Link to="/servicios"> 
+             <Button  className="group bg-[#d5b997] text-[#0a2f60] hover:bg-[#d5b997]/90">
               Nuestros Servicios
               <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button variant="outline" className="border-[#d5b997] text-black hover:bg-[#d5b997]/10 hover:text-gold">
+            </Link>
+          
+            <Button variant="outline" className="border-[#d5b997] text-black hover:bg-[#d5b997]/10 hover:text-gold"
+             onClick={() => handleWpp()}
+            >
               <Phone className="mr-2 h-4 w-4" />
               Consúltanos
             </Button>
