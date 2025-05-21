@@ -1,29 +1,28 @@
-"use client"
-
 import { motion } from "framer-motion"
-import { CheckCircle, Zap, Award, Microscope } from "lucide-react"
+import { CheckCircle, Zap, Award, Microscope, Rocket, Smile, Cpu } from "lucide-react"
+import shape from '../assets/3shape.jpg'
 
 export default function About() {
   const features = [
     {
-      icon: <Zap className="h-6 w-6 text-gold" />,
-      title: "Advanced Technology",
-      description: "State-of-the-art digital scanning and 3D printing technology for precise results.",
+      icon: <Cpu className="h-6 w-6 text-gold" />,
+      title: "Tecnología Avanzada",
+      description: "Tecnología de escaneo digital e impresión 3D de última generación para resultados precisos.",
     },
     {
       icon: <CheckCircle className="h-6 w-6 text-gold" />,
-      title: "Quality Assurance",
-      description: "Rigorous quality control processes to ensure perfect fit and natural aesthetics.",
+      title: "Garantía de Calidad",
+      description: "Rigurosos procesos de control de calidad para asegurar un ajuste perfecto y estética natural.",
     },
     {
-      icon: <Award className="h-6 w-6 text-gold" />,
-      title: "Expert Craftsmanship",
-      description: "Skilled technicians with years of experience in digital dental fabrication.",
+      icon: <Rocket className="h-6 w-6 text-gold" />,
+      title: "Alta Rapidez",
+      description: "Procesos digitales eficientes que reducen los tiempos de entrega y optimizan cada etapa del tratamiento.",
     },
     {
-      icon: <Microscope className="h-6 w-6 text-gold" />,
-      title: "Precision Engineering",
-      description: "Micron-level accuracy for dental prosthetics that fit perfectly the first time.",
+      icon: <Smile className="h-6 w-6 text-gold" />,
+      title: "Sin Molestias para tus Pacientes",
+      description: "Tecnología no invasiva que mejora la experiencia del paciente al eliminar incomodidades tradicionales.",
     },
   ]
 
@@ -36,11 +35,10 @@ export default function About() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-navy-blue mb-4">About Our Lab</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-navy-blue mb-4">Sobre Nosotros</h2>
           <div className="w-20 h-1 bg-gold mx-auto mb-6"></div>
-          <p className="max-w-2xl mx-auto text-gray-600">
-            Digital Dental Lab combines cutting-edge technology with expert craftsmanship to deliver
-            precision-engineered dental prosthetics that exceed expectations.
+          <p className="max-w-2xl text-xl mx-auto text-gray-600">
+          Realizamos trabajos digitales para odontólogos y laboratorios dentales.
           </p>
         </motion.div>
       </div>
@@ -55,14 +53,10 @@ export default function About() {
         >
           <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
             <img
-              src="https://placehold.co/600x400"
-              alt="Digital Dental Lab Facility"
+              src={shape}
+              alt="Instalaciones de Digital Dental Lab"
               className="w-full h-full object-cover"
             />
-          </div>
-          <div className="absolute -bottom-6 -right-6 bg-navy-blue text-white p-4 rounded-lg shadow-lg">
-            <p className="font-bold text-xl">15+ Years</p>
-            <p className="text-sm">of Excellence</p>
           </div>
         </motion.div>
 
@@ -72,15 +66,9 @@ export default function About() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-navy-blue mb-6">Pioneering Digital Dentistry</h3>
-          <p className="text-gray-600 mb-6">
-            Founded with a vision to revolutionize dental prosthetics, our lab has been at the forefront of digital
-            dentistry for over 15 years. We combine advanced technology with traditional craftsmanship to deliver
-            exceptional results.
-          </p>
+          <h3 className="text-2xl font-bold text-navy-blue mb-6">Liderando la Odontología Digital</h3>
           <p className="text-gray-600 mb-8">
-            Our team of skilled technicians works closely with dental professionals to create custom solutions that
-            enhance patient satisfaction and streamline clinical workflows.
+           Somos un laboratorio 100% digital. Diseño CAD selectivo y escaneos intraorales con precisión y respaldo técnico.
           </p>
 
           <div className="grid grid-cols-2 gap-6">

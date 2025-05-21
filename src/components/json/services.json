@@ -1,0 +1,66 @@
+[
+    {
+      "title": "DOE (Dispositivo Oclusal Estabilizante)",
+      "description": "Férula rígida de descarga, diseñada digitalmente, indicada para pacientes con bruxismo. Ayuda a proteger las piezas dentales y aliviar síntomas musculares y articulares derivados del estrés oclusal."
+    },
+    {
+      "title": "Diseño de Sonrisa Digital (DSD)",
+      "description": "Planificación estética digital que permite visualizar el resultado final antes de comenzar el tratamiento. Se combinan fotografías, escaneos y software especializado para lograr un diseño personalizado, funcional y armónico con el rostro del paciente."
+    },
+    {
+      "title": "Modelos",
+      "description": "Impresión 3D de modelos físicos a partir de archivos digitales (STL), utilizados para planificación, diagnóstico o confección de aparatos."
+    },
+    {
+      "title": "Escaneado de modelos",
+      "description": "Digitalización de modelos físicos (yeso o resina) mediante escáner de laboratorio, transformándolos en archivos STL utilizables en diseño CAD."
+    },
+    {
+      "title": "Escaneado intraoral",
+      "description": "Recepción y procesamiento de escaneos digitales tomados en boca, evitando la necesidad de modelos físicos. Se trabaja directamente desde archivos STL enviados por el odontólogo."
+    },
+    {
+      "title": "Provisorios en resina o PMMA",
+      "description": "Coronas o puentes temporales fabricados en resina acrílica o PMMA fresado, que brindan estética y funcionalidad mientras se elabora la restauración definitiva."
+    },
+    {
+      "title": "Guías quirúrgicas",
+      "description": "Dispositivos impresos que guían con precisión la colocación de implantes, basados en planificación digital 3D a partir de escaneos y tomografías."
+    },
+    {
+      "title": "Coronas deseadas en zirconio o disilicato",
+      "description": "Restauraciones definitivas altamente estéticas y duraderas, fresadas en zirconio o disilicato, adaptadas a las necesidades funcionales y cosméticas del paciente."
+    },
+    {
+      "title": "Incrustaciones fresadas (zirconio y disilicato)",
+      "description": "Restauraciones parciales conservadoras (inlays/onlays), fresadas con alta precisión en materiales estéticos, ideales para conservar estructura dental."
+    },
+    {
+      "title": "Cofias fresadas (zirconio y disilicato)",
+      "description": "Estructuras internas fresadas digitalmente que funcionan como base para coronas o rehabilitaciones, ofreciendo ajuste exacto y resistencia."
+    },
+    {
+      "title": "Coronas sobre implantes (zirconio o disilicato)",
+      "description": "Prótesis unitarias o múltiples diseñadas sobre aditamentos de implantes, con máxima precisión, estética y compatibilidad con el sistema utilizado."
+    },
+    {
+      "title": "Carillas fresadas",
+      "description": "Láminas delgadas fresadas en disilicato para mejorar forma, color y alineación dental con un enfoque conservador y altamente estético."
+    },
+    {
+      "title": "Encerado diagnóstico",
+      "description": "Diseño previo del resultado estético y funcional de una rehabilitación, realizado digitalmente para planificación clínica y presentación al paciente."
+    },
+    {
+      "title": "Placas de blanqueamiento",
+      "description": "Férulas finas personalizadas para tratamientos de blanqueamiento dental, adaptadas digitalmente para mejor retención del gel y comodidad del paciente."
+    },
+    {
+      "title": "Placas de contención",
+      "description": "Férulas rígidas o termoformadas que mantienen la posición dental post-tratamiento ortodóncico. Fabricadas a medida con escaneo digital."
+    },
+    {
+      "title": "Estampado de placas para alineadores",
+      "description": "Termoformado de alineadores transparentes sobre modelos digitales en cada etapa del tratamiento ortodóncico, garantizando ajuste y secuencia precisa."
+    }
+  ]

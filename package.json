@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@heroui/button": "2.2.19",
     "@heroui/code": "2.2.14",
     "@heroui/dropdown": "2.3.19",
@@ -22,6 +23,7 @@
     "@heroui/system": "2.4.15",
     "@heroui/theme": "2.4.15",
     "@heroui/use-theme": "2.1.8",
+    "@radix-ui/react-slot": "^1.2.3",
     "@react-aria/visually-hidden": "3.8.22",
     "@react-types/shared": "3.29.0",
     "@tsparticles/engine": "^3.8.1",

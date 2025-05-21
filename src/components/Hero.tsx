@@ -1,79 +1,219 @@
-import logo from '../assets/logo.jpg'
+"use client"
+
+import { useEffect, useRef } from "react"
+import { motion } from "framer-motion"
+import { FlipWordsDemo } from "./animation/FlipWordsComponent"
+import { Button } from "./ui/button"
+import { ChevronRight, Phone, ChevronDown } from "lucide-react"
+import logo from "../assets/logo.jpg"
 
 export function Hero() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  // Particle animation effect for the background
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+
+    const particles: {
+      x: number
+      y: number
+      size: number
+      speedX: number
+      speedY: number
+      opacity: number
+    }[] = []
+
+    const createParticles = () => {
+      for (let i = 0; i < 100; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3 + 1,
+          speedX: Math.random() * 0.5 - 0.25,
+          speedY: Math.random() * 0.5 - 0.25,
+          opacity: Math.random() * 0.5 + 0.2,
+        })
+      }
+    }
+
+    const animateParticles = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i]
+        ctx.fillStyle = `rgba(213, 185, 151, ${p.opacity})`
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+        ctx.fill()
+
+        p.x += p.speedX
+        p.y += p.speedY
+
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1
+      }
+
+      requestAnimationFrame(animateParticles)
+    }
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      createParticles()
+    }
+
+    window.addEventListener("resize", handleResize)
+    createParticles()
+    animateParticles()
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  // Smooth scroll function
+  const scrollToNextSection = () => {
+    const heroHeight = window.innerHeight
+    window.scrollTo({
+      top: heroHeight,
+      behavior: "smooth",
+    })
+  }
+
+
+
   return (
-    <section className="relative w-full overflow-hidden bg-[#0A1E3C] py-20 md:py-32">
+    <section className="relative w-full overflow-hidden bg-[#0a2f60] py-20 md:py-32 min-h-screen flex flex-col justify-between">
+      {/* Animated canvas background */}
+      <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-40" />
+
       {/* Background pattern */}
       <div className="absolute inset-0 z-0 opacity-5">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#D4B982" strokeWidth="1" />
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d5b997" strokeWidth="1" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4">
+      {/* Radial gradient overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-radial from-[#0a2f60]/0 to-[#0a2f60]/90"></div>
+
+      <div className="container relative z-10 mx-auto px-4 flex-grow flex flex-col justify-center">
         <div className="flex flex-col items-center justify-center gap-12 text-center">
-          {/* Logo */}
-          <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-[#D4B982] md:h-40 md:w-40">
-            <img
-              src={logo}
-              alt="Digital Dental Lab Logo"
-
-              className="object-cover"
-            />
-          </div>
-
-          {/* Animated Text */}
-        <h1 className="text-4xl font-bold ">Digital Dental Lab</h1>
-
-          {/* Tagline */}
-          <p className="max-w-2xl text-lg text-white/80 md:text-xl">
-            Precision craftsmanship meets cutting-edge technology for exceptional dental solutions
-          </p>
-
-          {/* Animated Tooth Icon */}
-          <div className="tooth-animation my-6 h-20 w-20">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
-              <path
-                d="M50 10C60 10 70 15 75 25C80 35 85 50 80 65C75 80 65 90 50 90C35 90 25 80 20 65C15 50 20 35 25 25C30 15 40 10 50 10Z"
-                stroke="#D4B982"
-                strokeWidth="3"
-                className="animate-pulse"
+          {/* Animated Logo */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              duration: 0.8,
+            }}
+            className="relative"
+          >
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#d5b997] to-[#d5b997]/60 blur-md animate-pulse"></div>
+            <div className="relative h-32 w-32 overflow-hidden rounded-full md:h-40 md:w-40">
+              <img
+                src={logo}
+                alt="Digital Dental Lab Logo"
+                width={160}
+                height={160}
+                className="object-cover w-full h-full"
               />
-              <path
-                d="M50 20C55 20 60 25 60 35C60 45 55 50 50 50C45 50 40 45 40 35C40 25 45 20 50 20Z"
-                stroke="#D4B982"
-                strokeWidth="3"
-                className="animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              />
-            </svg>
-          </div>
+            </div>
+          </motion.div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <button className="bg-[#D4B982] text-[#0A1E3C] hover:bg-[#D4B982]/90">Our Services</button>
-            <button  className="border-[#D4B982] text-white hover:bg-[#D4B982]/10 hover:text-white">
-              Contact Us
-            </button>
-          </div>
+          {/* Animated Title */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="space-y-4"
+          >
+            <h1 className="bg-gradient-to-r from-[#d5b997] via-gold to-white bg-clip-text pb-4 text-4xl font-bold text-transparent md:text-5xl lg:text-6xl">
+              Digital Dental Lab
+            </h1>
+
+            {/* FlipWordsDemo implementation */}
+            <div className="mx-auto flex h-12 items-center justify-center text-xl md:text-2xl">
+              <span className="font-semibold text-white">Especialistas en</span>
+            <FlipWordsDemo/>
+            </div>
+          </motion.div>
+
+
+          {/* CTA Buttons with animation */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+            className="flex flex-col gap-4 sm:flex-row"
+          >
+            <Button className="group bg-[#d5b997] text-[#0a2f60] hover:bg-[#d5b997]/90">
+              Nuestros Servicios
+              <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button variant="outline" className="border-[#d5b997] text-black hover:bg-[#d5b997]/10 hover:text-gold">
+              <Phone className="mr-2 h-4 w-4" />
+              Consúltanos
+            </Button>
+          </motion.div>
         </div>
       </div>
 
-      {/* Bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0">
+      {/* Scroll Indicator */}
+      <div className="relative z-20 flex justify-center mb-8">
+        <motion.button
+          onClick={scrollToNextSection}
+          className="flex flex-col items-center cursor-pointer group"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.5 }}
+        >
+          <div className="flex flex-col items-center">
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{
+                repeat: Number.POSITIVE_INFINITY,
+                duration: 2,
+                ease: "easeInOut",
+              }}
+              className="relative"
+            >
+              <div className="absolute -inset-1 rounded-full bg-[#d5b997]/30 blur-sm"></div>
+              <ChevronDown className="h-8 w-8 text-[#d5b997] relative z-10" />
+            </motion.div>
+            <div className="h-12 w-[1px] bg-gradient-to-b from-[#d5b997] to-transparent mt-1 group-hover:h-16 transition-all duration-300"></div>
+          </div>
+        </motion.button>
+      </div>
+
+      {/* Bottom wave with animation */}
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        className="absolute bottom-0 left-0 right-0"
+      >
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
           <path
             d="M0 120L48 110C96 100 192 80 288 70C384 60 480 60 576 65C672 70 768 80 864 85C960 90 1056 90 1152 85C1248 80 1344 70 1392 65L1440 60V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0Z"
-            fill="#D4B982"
-            fillOpacity="0.1"
+            fill="#d5b997"
+            fillOpacity="0.2"
           />
         </svg>
-      </div>
+      </motion.div>
     </section>
   )
 }
