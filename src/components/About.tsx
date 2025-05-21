@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { CheckCircle, Zap, Award, Microscope, Rocket, Smile, Cpu } from "lucide-react"
+import { CheckCircle, Rocket, Smile, Cpu } from "lucide-react"
 import shape from '../assets/3shape.jpg'
 
 export default function About() {
