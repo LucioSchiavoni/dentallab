@@ -11,7 +11,7 @@ export function FlipWordsDemo() {
     "Guías quirúrgicas",
     "Coronas deseadas en zirconio o disilicato",
     "Incrustaciones fresadas (zirconio y disilicato)",
-    "Cofias fresadas (zirconio y disilicato)",
+    "Cofias fresadas en zirconio",
     "Coronas sobre implantes (zirconio o disilicato)",
     "Carillas fresadas",
     "Encerado diagnóstico",

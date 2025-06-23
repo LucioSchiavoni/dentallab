@@ -17,7 +17,7 @@
     },
     {
       "title": "Escaneado intraoral",
-      "description": "Recepción y procesamiento de escaneos digitales tomados en boca, evitando la necesidad de modelos físicos. Se trabaja directamente desde archivos STL enviados por el odontólogo."
+      "description": "Recepción y procesamiento de escaneos digitales tomados en boca, evitando el usos de materiales de impresión. Se trabaja directamente desde archivos STL enviados por el odontólogo."
     },
     {
       "title": "Provisorios en resina o PMMA",
@@ -36,7 +36,7 @@
       "description": "Restauraciones parciales conservadoras (inlays/onlays), fresadas con alta precisión en materiales estéticos, ideales para conservar estructura dental."
     },
     {
-      "title": "Cofias fresadas (zirconio y disilicato)",
+      "title": "Cofias fresadas en zirconio",
       "description": "Estructuras internas fresadas digitalmente que funcionan como base para coronas o rehabilitaciones, ofreciendo ajuste exacto y resistencia."
     },
     {

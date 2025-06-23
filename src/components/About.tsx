@@ -66,7 +66,7 @@ export default function About() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-navy-blue mb-6">Liderando la Odontología Digital</h3>
+          <h3 className="text-2xl font-bold text-navy-blue mb-6">Transformando Sonrisa con Tecnología</h3>
           <p className="text-gray-600 mb-8">
            Somos un laboratorio 100% digital. Diseño CAD selectivo y escaneos intraorales con precisión y respaldo técnico.
           </p>

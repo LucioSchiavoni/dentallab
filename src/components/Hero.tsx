@@ -5,8 +5,8 @@ import { motion } from "framer-motion"
 import { FlipWordsDemo } from "./animation/FlipWordsComponent"
 import { Button } from "./ui/button"
 import { ChevronRight, Phone, ChevronDown } from "lucide-react"
-import logo from "../assets/logo.jpg"
 import { Link } from "react-router-dom"
+import logoSvg from '../assets/logo-dental.svg'
 
 export function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -141,10 +141,10 @@ export function Hero() {
             }}
             className="relative"
           >
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#d5b997] to-[#d5b997]/60 blur-md animate-pulse"></div>
-            <div className="relative h-32 w-32 overflow-hidden rounded-full md:h-40 md:w-40">
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-t from-[#eedfcd] to-[#d5b997]/60 blur-md animate-pulse"></div>
+            <div className="relative h-28 w-28 overflow-hidden rounded-full md:h-40 md:w-40">
               <img
-                src={logo || "/placeholder.svg"}
+                src={logoSvg || "/placeholder.svg"}
                 alt="Digital Dental Lab Logo"
                 width={160}
                 height={160}
@@ -166,7 +166,7 @@ export function Hero() {
 
             <div className="flex flex-col items-center justify-center">
               <div className="flex flex-col sm:flex-row items-center justify-center gap-1">
-                <span className="font-semibold text-white text-xl md:text-2xl">Especialistas en</span>
+                <span className="font-semibold text-white text-xl md:text-2xl">Nos enfocamos en</span>
                 <FlipWordsDemo />
               </div>
             </div>

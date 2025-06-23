@@ -6,6 +6,7 @@ import { Phone, Mail, Send, Instagram } from "lucide-react"
 
 export default function Contacto() {
   const [showAlert, setShowAlert] = useState(false)
+  const [phoneError, setPhoneError] = useState("")
 
   const [formData, setFormData] = useState({
     from_name: "",
@@ -17,7 +18,18 @@ export default function Contacto() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    if (name === "from_phone") {
+      // Solo permitir números
+      const onlyNums = value.replace(/[^0-9]/g, "")
+      setFormData((prev) => ({ ...prev, [name]: onlyNums }))
+      if (/[^0-9]/.test(value)) {
+        setPhoneError("Solo se permiten números en el teléfono")
+      } else {
+        setPhoneError("")
+      }
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }))
+    }
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -164,8 +176,13 @@ export default function Contacto() {
                     name="from_phone"
                     value={formData.from_phone}
                     onChange={handleChange}
+                    pattern="[0-9]*"
+                    inputMode="numeric"
                     className="w-full px-4 py-2 border border-gray-300    rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                   />
+                  {phoneError && (
+                    <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-1">
@@ -201,9 +218,9 @@ export default function Contacto() {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -50 }}
-          className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md"
+          className="fixed top-4  transform -translate-x-1/2 z-50 w-full max-w-xs sm:max-w-md px-2 box-border"
         >
-          <div className="bg-white border-l-4 border-gold rounded-lg shadow-lg p-5 mx-4">
+          <div className="bg-white border-l-4 border-gold rounded-lg shadow-lg p-5">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="bg-gold rounded-full p-2">
