@@ -1,96 +1,14 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { FlipWordsDemo } from "./animation/FlipWordsComponent"
 import { Button } from "./ui/button"
 import { ChevronRight, Phone, ChevronDown } from "lucide-react"
 import { Link } from "react-router-dom"
 import logoSvg from '../assets/logo-dental.svg'
+import { ParticleBackground } from "./animation/ParticleBackground"
 
 export function Hero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  // Particle animation effect for the background
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-
-    const particles: {
-      x: number
-      y: number
-      size: number
-      speedX: number
-      speedY: number
-      opacity: number
-    }[] = []
-
-    const createParticles = () => {
-      // Clear existing particles
-      particles.length = 0
-
-      // Calculate number of particles based on screen width
-      const particleCount = window.innerWidth < 768 ? 40 : 100
-
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 1,
-          speedX: Math.random() * 0.5 - 0.25,
-          speedY: Math.random() * 0.5 - 0.25,
-          opacity: Math.random() * 0.5 + 0.2,
-        })
-      }
-    }
-
-    const animateParticles = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i]
-        ctx.fillStyle = `rgba(213, 185, 151, ${p.opacity})`
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fill()
-
-        p.x += p.speedX
-        p.y += p.speedY
-
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1
-      }
-
-      requestAnimationFrame(animateParticles)
-    }
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-
-      // Clear the canvas before recreating particles
-      ctx?.clearRect(0, 0, canvas.width, canvas.height)
-
-      // Recreate particles with appropriate count
-      createParticles()
-    }
-
-    window.addEventListener("resize", handleResize)
-    createParticles()
-    animateParticles()
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-      particles.length = 0 // Clear particles array
-    }
-  }, [])
-
   // Smooth scroll function
   const scrollToNextSection = () => {
     const heroHeight = window.innerHeight
@@ -104,14 +22,13 @@ export function Hero() {
     const phoneNumber = "59894492064" 
     const message = "Hola, quisiera consultar sobre sus servicios."
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
-
     window.open(url, "_blank")
   }
 
   return (
     <section className="relative w-full overflow-hidden bg-[#0a2f60] py-20 md:py-32 min-h-screen flex flex-col justify-between">
       {/* Animated canvas background */}
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-40" />
+      <ParticleBackground />
 
       {/* Background pattern */}
       <div className="absolute inset-0 z-0 opacity-5">
