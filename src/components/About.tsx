@@ -22,13 +22,13 @@ export default function About() {
     {
       icon: <Smile className="h-6 w-6 text-gold" />,
       title: "Sin Molestias para tus Pacientes",
-      description: "Tecnología no invasiva que mejora la experiencia del paciente al eliminar incomodidades tradicionales.",
+      description: "Tecnología no invasiva que mejora la experiencia.",
     },
   ]
 
   return (
     <div className="container mx-auto px-4">
-      <div className="text-center mb-16">
+      <div className="text-center mb-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export default function About() {
         </motion.div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid md:grid-cols-2 gap-4 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -51,7 +51,7 @@ export default function About() {
           viewport={{ once: true }}
           className="relative"
         >
-          <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+          <div className=" bg-gray-200 rounded-lg overflow-hidden">
             <img
               src={shape}
               alt="Instalaciones de Digital Dental Lab"

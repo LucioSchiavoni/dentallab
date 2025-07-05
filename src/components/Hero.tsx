@@ -19,7 +19,7 @@ export function Hero() {
   }
 
   const handleWpp = () => {
-    const phoneNumber = "59894492064" 
+    const phoneNumber = "59894945790" 
     const message = "Hola, quisiera consultar sobre sus servicios."
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
     window.open(url, "_blank")
@@ -105,7 +105,7 @@ export function Hero() {
 
             <Button
               variant="outline"
-              className="border-[#d5b997] text-black hover:bg-[#d5b997]/10 hover:text-gold"
+              className="border-[#d5b997] bg-white text-black hover:bg-[#d5b997]/10 hover:text-gold"
               onClick={() => handleWpp()}
             >
               <Phone className="mr-2 h-4 w-4" />

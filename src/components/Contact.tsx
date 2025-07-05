@@ -73,18 +73,33 @@ export default function Contacto() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-white mb-6">Ponte en Contacto</h3>
-
           <div className="space-y-6 mb-8">
             <div className="flex items-start">
               <div className="bg-gold p-3 rounded-full mr-4">
                 <Phone className="h-5 w-5 text-navy-blue" />
               </div>
               <div>
-                <h4 className="font-medium text-white">Teléfono</h4>
-                <p className="text-white">094 492 064 - 099 869 374</p>
-                
-              </div>
+  <h3 className="font-medium text-white">Teléfonos</h3>
+  <div className="flex gap-1">
+    <a
+      href="https://api.whatsapp.com/send?phone=59894945790&text=Hola,%20quisiera%20consultar%20sobre%20sus%20servicios."
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-white hover:underline"
+    >
+      094945790
+    </a>
+    <span className="text-white font-bold">-</span>
+    <a
+      href="https://api.whatsapp.com/send?phone=59899869374&text=Hola,%20quisiera%20consultar%20sobre%20sus%20servicios."
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-white hover:underline"
+    >
+      099869374
+    </a>
+  </div>
+</div>
             </div>
             <div className="flex items-start">
               <div className="bg-gold p-3 rounded-full mr-4">
@@ -92,7 +107,14 @@ export default function Contacto() {
               </div>
               <div>
                 <h4 className="font-medium text-white">Correo Electrónico</h4>
-                <p className="text-white">laboratoriodentaldigital.ml@gmail.com</p>
+                <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=laboratoriodentaldigital.ml@gmail.com&su=Consulta&body=Hola, quiero hacer una consulta."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-white hover:underline"
+>
+laboratoriodentaldigital.ml@gmail.com
+</a>
               </div>
             </div>
 
