@@ -55,7 +55,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button className="md:hidden mr-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen 
             ? <X size={24} className={isScrolled ? "text-navy-blue" : "text-white"} /> 
             : <Menu size={24} className={isScrolled ? "text-navy-blue" : "text-white"} />}

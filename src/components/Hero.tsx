@@ -5,7 +5,7 @@ import { FlipWordsDemo } from "./animation/FlipWordsComponent"
 import { Button } from "./ui/button"
 import { ChevronRight, Phone, ChevronDown } from "lucide-react"
 import { Link } from "react-router-dom"
-import logoSvg from '../assets/logo-dental.svg'
+import logoSvg from "../assets/logo-dental.svg"
 import { ParticleBackground } from "./animation/ParticleBackground"
 
 export function Hero() {
@@ -19,7 +19,7 @@ export function Hero() {
   }
 
   const handleWpp = () => {
-    const phoneNumber = "59894945790" 
+    const phoneNumber = "59894945790"
     const message = "Hola, quisiera consultar sobre sus servicios."
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
     window.open(url, "_blank")
@@ -80,7 +80,6 @@ export function Hero() {
             <h1 className="bg-gradient-to-r from-[#d5b997] via-gold to-white bg-clip-text text-5xl pb-4 font-bold text-transparent md:text-6xl lg:text-7xl">
               Digital Dental Lab
             </h1>
-
             <div className="flex flex-col items-center justify-center">
               <div className="flex flex-col sm:flex-row items-center justify-center gap-1">
                 <span className="font-semibold text-white text-xl md:text-2xl">Nos enfocamos en</span>
@@ -102,7 +101,6 @@ export function Hero() {
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-
             <Button
               variant="outline"
               className="border-[#d5b997] bg-white text-black hover:bg-[#d5b997]/10 hover:text-gold"
@@ -115,7 +113,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="relative z-20 flex justify-center mb-8">
         <motion.button
           onClick={scrollToNextSection}
@@ -123,6 +120,7 @@ export function Hero() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 0.5 }}
+          aria-label="Desplazarse hacia abajo para ver más contenido"
         >
           <div className="flex flex-col items-center">
             <motion.div
@@ -139,10 +137,11 @@ export function Hero() {
             </motion.div>
             <div className="h-12 w-[1px] bg-gradient-to-b from-[#d5b997] to-transparent mt-1 group-hover:h-16 transition-all duration-300"></div>
           </div>
+          <span className="text-[#d5b997] text-sm font-medium mt-2 opacity-80 group-hover:opacity-100 transition-opacity">
+            Explorar más
+          </span>
         </motion.button>
       </div>
-
-      {/* Bottom wave with animation */}
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

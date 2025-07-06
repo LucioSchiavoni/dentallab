@@ -102,21 +102,24 @@ export default function Contacto() {
 </div>
             </div>
             <div className="flex items-start">
-              <div className="bg-gold p-3 rounded-full mr-4">
-                <Mail className="h-5 w-5 text-text-navy-blue" />
-              </div>
-              <div>
-                <h4 className="font-medium text-white">Correo Electrónico</h4>
-                <a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=laboratoriodentaldigital.ml@gmail.com&su=Consulta&body=Hola, quiero hacer una consulta."
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-white hover:underline"
->
-laboratoriodentaldigital.ml@gmail.com
-</a>
-              </div>
-            </div>
+  <div className="bg-gold p-3 rounded-full mr-4">
+    <Mail className="h-5 w-5 text-text-navy-blue" />
+  </div>
+  <div>
+    <h4 className="font-medium text-white">Correo Electrónico</h4>
+    
+    <p className="text-white select-all">
+      laboratoriodentaldigital.ml@gmail.com
+    </p>
+    
+    <a
+      href="mailto:laboratoriodentaldigital.ml@gmail.com?subject=Consulta&body=Hola, quiero hacer una consulta."
+      className="text-sm text-gold hover:underline"
+    >
+      Enviar mensaje
+    </a>
+  </div>
+</div>
 
             <div className="flex items-start">
               <div className="bg-gold p-3 rounded-full mr-4">
@@ -175,7 +178,7 @@ laboratoriodentaldigital.ml@gmail.com
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="from_email" className="block text-sm font-medium text-gray-700 mb-1">
                     Correo Electrónico
                   </label>
                   <input
@@ -189,7 +192,7 @@ laboratoriodentaldigital.ml@gmail.com
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="from_phone" className="block text-sm font-medium text-gray-700 mb-1">
                     Número de Teléfono
                   </label>
                   <input
@@ -207,7 +210,7 @@ laboratoriodentaldigital.ml@gmail.com
                   )}
                 </div>
                 <div>
-                  <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Tu Mensaje
                   </label>
                   <textarea
