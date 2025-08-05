@@ -79,17 +79,7 @@ export default function Contacto() {
                 <Phone className="h-5 w-5 text-navy-blue" />
               </div>
               <div>
-  <h3 className="font-medium text-white">Teléfonos</h3>
-  <div className="flex gap-1">
-    <a
-      href="https://api.whatsapp.com/send?phone=59894945790&text=Hola,%20quisiera%20consultar%20sobre%20sus%20servicios."
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-white hover:underline"
-    >
-      094945790
-    </a>
-    <span className="text-white font-bold">-</span>
+  <h3 className="font-medium text-white">Teléfono</h3>
     <a
       href="https://api.whatsapp.com/send?phone=59899869374&text=Hola,%20quisiera%20consultar%20sobre%20sus%20servicios."
       target="_blank"
@@ -99,7 +89,7 @@ export default function Contacto() {
       099869374
     </a>
   </div>
-</div>
+
             </div>
             <div className="flex items-start">
   <div className="bg-gold p-3 rounded-full mr-4">

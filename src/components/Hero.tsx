@@ -19,7 +19,7 @@ export function Hero() {
   }
 
   const handleWpp = () => {
-    const phoneNumber = "59894945790"
+    const phoneNumber = "59899869374"
     const message = "Hola, quisiera consultar sobre sus servicios."
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
     window.open(url, "_blank")
