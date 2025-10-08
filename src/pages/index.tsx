@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar"
 import About from "@/components/About"
 import Contact from "@/components/Contact"
 import { useEffect } from "react"
+import CadPage from "./cad"
 // import Services from "@/components/Services"
 
 
@@ -33,11 +34,14 @@ function App() {
       <Navbar />
       <section id="inicio" className="relative">
         <Hero/>
-       
+
       </section>
       <section id="nosotros" className="py-20">
         <About />
       </section>
+      
+        <CadPage/>
+      
       {/* <section id="servicios" className="py-20 bg-gray-50">
     <Services/>
         </section> */}

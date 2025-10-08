@@ -57,12 +57,12 @@ export default function Contacto() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
           >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Contáctanos</h2>
-          <div className="w-20 h-1 bg-gold mx-auto mb-6"></div>
-          <p className="max-w-2xl mx-auto text-white">
-            ¿Tienes preguntas? Comunícate con nuestro equipo para recibir
-            asistencia personalizada.
+           <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl font-bold  mb-6 text-white">¿Listo para comenzar?</h2>
+          <p className="text-lg text-white mb-8 ">
+            Contáctanos para conocer más sobre nuestros servicios y cómo podemos ayudarte
           </p>
+        </div>
         </motion.div>
       </div>
 
