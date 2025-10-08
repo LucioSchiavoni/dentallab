@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
-import { TracingBeam } from "./ui/tracing-beam"
 import serviceJson from "./json/services.json"
 import { cn } from "@/lib/utils"
+import { ParticleBackground } from "./animation/ParticleBackground"
 
 const Services = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -23,42 +23,25 @@ const Services = () => {
   const headerOpacity = Math.max(0, Math.min(1, 1 - scrollY / 300))
   const titleScale = Math.max(0.8, Math.min(1, 1 - scrollY / 1000))
 
-  // Calculate background color based on scroll
-  const getBackgroundColor = () => {
-    if (scrollY > 600) return "bg-gradient-to-b from-[#051a38] to-[#030e1f] text-white"
-    if (scrollY > 300) return "bg-gradient-to-b from-[#072548] to-[#051a38] text-white"
-    return "bg-[#0a2f60] text-white"
-  }
-
   return (
-    <div className={`min-h-screen transition-colors duration-700 ${getBackgroundColor()}`}>
+    <div className="min-h-screen relative overflow-hidden bg-[#0a2f60]">
+      {/* Fondo de partículas */}
+      <ParticleBackground />
       {/* Fixed header with back button that changes on scroll */}
       <div
         ref={headerRef}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrollY > 50 ? "bg-[#0a2f60]/90 backdrop-blur-md shadow-md" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrollY > 50 ? 'bg-white shadow-md' : 'bg-transparent'}`}
       >
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link
             to="/"
-            className={`group flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
-              scrollY > 50
-                ? "bg-[#1a4b8c] hover:bg-[#2a5ca3] text-white"
-                : "bg-[#1a4b8c]/80 hover:bg-[#1a4b8c] text-white"
-            }`}
+            className={`group flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${scrollY > 50 ? 'bg-[#e5e7eb] text-[#0a2f60] hover:bg-[#d5b997]/60' : 'bg-[#1a4b8c]/80 text-white hover:bg-[#1a4b8c]'}`}
           >
-            <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
+            <ArrowLeft className={`h-5 w-5 transition-transform group-hover:-translate-x-1 ${scrollY > 50 ? 'text-[#0a2f60]' : 'text-white'}`} />
             <span className="font-medium">Volver</span>
           </Link>
 
-          <div
-            className={`text-lg font-bold transition-opacity duration-300 ${
-              scrollY > 50 ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            Nuestros Servicios
-          </div>
+          <div className={`text-lg font-bold transition-opacity duration-300 opacity-100 ${scrollY > 50 ? 'text-[#0a2f60]' : 'text-white'}`}>Nuestros Servicios</div>
         </div>
       </div>
 
@@ -75,31 +58,26 @@ const Services = () => {
             transform: `scale(${titleScale})`,
           }}
         >
-          <h1
-            className={`text-5xl md:text-6xl font-extrabold mb-4 transition-colors duration-700 ${
-              scrollY > 200 ? "text-blue-300" : "text-white"
-            }`}
-          >
+          <h1 className="text-5xl md:text-6xl font-extrabold  text-white drop-shadow-lg">
             Nuestros Servicios
           </h1>
-    
         </div>
       </div>
 
       {/* Main content with tracing beam */}
-      <TracingBeam className="px-4 md:px-6 pb-20 pt-10">
+      <div className="p-3 relative z-10">
         <ServicesContent
           services={serviceJson}
           hoveredIndex={hoveredIndex}
           setHoveredIndex={setHoveredIndex}
           scrollY={scrollY}
         />
-      </TracingBeam>
+      </div>
     </div>
   )
 }
 
-// Separate component for services content
+
 const ServicesContent = ({
   services,
   hoveredIndex,
@@ -127,8 +105,8 @@ const ServicesContent = ({
                 "transform",
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
                 hoveredIndex === index
-                  ? "bg-gradient-to-br from-[#0d3872] to-[#0a2f60] shadow-lg scale-[1.02] border-[#2a5ca3]"
-                  : "bg-[#0a2f60]/50 hover:shadow-md hover:border-[#2a5ca3]",
+                  ? "bg-[#0d3872] shadow-lg scale-[1.02] border-[#2a5ca3]"
+                  : "bg-[#0d3872] hover:shadow-md hover:border-[#2a5ca3]",
               )}
               style={{
                 transitionDelay: `${index * 100}ms`,

@@ -73,28 +73,43 @@ export default function Contacto() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-white mb-6">Ponte en Contacto</h3>
-
           <div className="space-y-6 mb-8">
             <div className="flex items-start">
               <div className="bg-gold p-3 rounded-full mr-4">
                 <Phone className="h-5 w-5 text-navy-blue" />
               </div>
               <div>
-                <h4 className="font-medium text-white">Teléfono</h4>
-                <p className="text-white">094 492 064 - 099 869 374</p>
-                
-              </div>
+  <h3 className="font-medium text-white">Teléfono</h3>
+    <a
+      href="https://api.whatsapp.com/send?phone=59899869374&text=Hola,%20quisiera%20consultar%20sobre%20sus%20servicios."
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-white hover:underline"
+    >
+      099869374
+    </a>
+  </div>
+
             </div>
             <div className="flex items-start">
-              <div className="bg-gold p-3 rounded-full mr-4">
-                <Mail className="h-5 w-5 text-text-navy-blue" />
-              </div>
-              <div>
-                <h4 className="font-medium text-white">Correo Electrónico</h4>
-                <p className="text-white">laboratoriodentaldigital.ml@gmail.com</p>
-              </div>
-            </div>
+  <div className="bg-gold p-3 rounded-full mr-4">
+    <Mail className="h-5 w-5 text-text-navy-blue" />
+  </div>
+  <div>
+    <h4 className="font-medium text-white">Correo Electrónico</h4>
+    
+    <p className="text-white select-all">
+      laboratoriodentaldigital.ml@gmail.com
+    </p>
+    
+    <a
+      href="mailto:laboratoriodentaldigital.ml@gmail.com?subject=Consulta&body=Hola, quiero hacer una consulta."
+      className="text-sm text-gold hover:underline"
+    >
+      Enviar mensaje
+    </a>
+  </div>
+</div>
 
             <div className="flex items-start">
               <div className="bg-gold p-3 rounded-full mr-4">
@@ -153,7 +168,7 @@ export default function Contacto() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="from_email" className="block text-sm font-medium text-gray-700 mb-1">
                     Correo Electrónico
                   </label>
                   <input
@@ -167,7 +182,7 @@ export default function Contacto() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="from_phone" className="block text-sm font-medium text-gray-700 mb-1">
                     Número de Teléfono
                   </label>
                   <input
@@ -185,7 +200,7 @@ export default function Contacto() {
                   )}
                 </div>
                 <div>
-                  <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Tu Mensaje
                   </label>
                   <textarea

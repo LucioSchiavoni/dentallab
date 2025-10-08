@@ -1,96 +1,14 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { FlipWordsDemo } from "./animation/FlipWordsComponent"
 import { Button } from "./ui/button"
 import { ChevronRight, Phone, ChevronDown } from "lucide-react"
 import { Link } from "react-router-dom"
-import logoSvg from '../assets/logo-dental.svg'
+import logoSvg from "../assets/logo-dental.svg"
+import { ParticleBackground } from "./animation/ParticleBackground"
 
 export function Hero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  // Particle animation effect for the background
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-
-    const particles: {
-      x: number
-      y: number
-      size: number
-      speedX: number
-      speedY: number
-      opacity: number
-    }[] = []
-
-    const createParticles = () => {
-      // Clear existing particles
-      particles.length = 0
-
-      // Calculate number of particles based on screen width
-      const particleCount = window.innerWidth < 768 ? 40 : 100
-
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 1,
-          speedX: Math.random() * 0.5 - 0.25,
-          speedY: Math.random() * 0.5 - 0.25,
-          opacity: Math.random() * 0.5 + 0.2,
-        })
-      }
-    }
-
-    const animateParticles = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i]
-        ctx.fillStyle = `rgba(213, 185, 151, ${p.opacity})`
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fill()
-
-        p.x += p.speedX
-        p.y += p.speedY
-
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1
-      }
-
-      requestAnimationFrame(animateParticles)
-    }
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-
-      // Clear the canvas before recreating particles
-      ctx?.clearRect(0, 0, canvas.width, canvas.height)
-
-      // Recreate particles with appropriate count
-      createParticles()
-    }
-
-    window.addEventListener("resize", handleResize)
-    createParticles()
-    animateParticles()
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-      particles.length = 0 // Clear particles array
-    }
-  }, [])
-
   // Smooth scroll function
   const scrollToNextSection = () => {
     const heroHeight = window.innerHeight
@@ -101,17 +19,16 @@ export function Hero() {
   }
 
   const handleWpp = () => {
-    const phoneNumber = "59894492064" 
+    const phoneNumber = "59899869374"
     const message = "Hola, quisiera consultar sobre sus servicios."
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
-
     window.open(url, "_blank")
   }
 
   return (
     <section className="relative w-full overflow-hidden bg-[#0a2f60] py-20 md:py-32 min-h-screen flex flex-col justify-between">
       {/* Animated canvas background */}
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-40" />
+      <ParticleBackground />
 
       {/* Background pattern */}
       <div className="absolute inset-0 z-0 opacity-5">
@@ -163,7 +80,6 @@ export function Hero() {
             <h1 className="bg-gradient-to-r from-[#d5b997] via-gold to-white bg-clip-text text-5xl pb-4 font-bold text-transparent md:text-6xl lg:text-7xl">
               Digital Dental Lab
             </h1>
-
             <div className="flex flex-col items-center justify-center">
               <div className="flex flex-col sm:flex-row items-center justify-center gap-1">
                 <span className="font-semibold text-white text-xl md:text-2xl">Nos enfocamos en</span>
@@ -185,10 +101,9 @@ export function Hero() {
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-
             <Button
               variant="outline"
-              className="border-[#d5b997] text-black hover:bg-[#d5b997]/10 hover:text-gold"
+              className="border-[#d5b997] bg-white text-black hover:bg-[#d5b997]/10 hover:text-gold"
               onClick={() => handleWpp()}
             >
               <Phone className="mr-2 h-4 w-4" />
@@ -198,7 +113,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="relative z-20 flex justify-center mb-8">
         <motion.button
           onClick={scrollToNextSection}
@@ -206,6 +120,7 @@ export function Hero() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 0.5 }}
+          aria-label="Desplazarse hacia abajo para ver más contenido"
         >
           <div className="flex flex-col items-center">
             <motion.div
@@ -222,10 +137,11 @@ export function Hero() {
             </motion.div>
             <div className="h-12 w-[1px] bg-gradient-to-b from-[#d5b997] to-transparent mt-1 group-hover:h-16 transition-all duration-300"></div>
           </div>
+          <span className="text-[#d5b997] text-sm font-medium mt-2 opacity-80 group-hover:opacity-100 transition-opacity">
+            Explorar más
+          </span>
         </motion.button>
       </div>
-
-      {/* Bottom wave with animation */}
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
