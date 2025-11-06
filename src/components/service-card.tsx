@@ -6,9 +6,10 @@ interface ServiceCardProps {
   features: string[]
   imagePosition: "left" | "right"
   imageSrc: string
+  isVideo?: boolean
 }
 
-export function ServiceCard({ title, description, features, imagePosition, imageSrc }: ServiceCardProps) {
+export function ServiceCard({ title, description, features, imagePosition, imageSrc, isVideo }: ServiceCardProps) {
   return (
     <div
       className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center ${
@@ -19,7 +20,11 @@ export function ServiceCard({ title, description, features, imagePosition, image
       <div className={`relative ${imagePosition === "right" ? "md:col-start-2" : ""}`}>
         <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl blur-2xl"></div>
         <div className="relative text-white aspect-[4/3] rounded-2xl overflow-hidden border border-border bg-muted">
-          <img src={imageSrc || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
+          {isVideo ? (
+            <video src={imageSrc} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+          ) : (
+            <img src={imageSrc || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
+          )}
         </div>
       </div>
 

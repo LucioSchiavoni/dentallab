@@ -40,7 +40,7 @@ function App() {
         <About />
       </section>
       
-        <CadPage/>
+        {/* <CadPage/> */}
       
       {/* <section id="servicios" className="py-20 bg-gray-50">
     <Services/>

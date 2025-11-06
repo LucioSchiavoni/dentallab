@@ -4,6 +4,9 @@ import { ArrowLeft } from "lucide-react"
 import serviceJson from "./json/services.json"
 import { cn } from "@/lib/utils"
 import { ParticleBackground } from "./animation/ParticleBackground"
+import { ServiceCard } from "./service-card"
+import designCadImage from "@/assets/cad.jpg"
+import cadVideo from "@/assets/cam-dentallab.mp4"
 
 const Services = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -64,14 +67,54 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Main content with tracing beam */}
-      <div className="p-3 relative z-10">
-        <ServicesContent
-          services={serviceJson}
-          hoveredIndex={hoveredIndex}
-          setHoveredIndex={setHoveredIndex}
-          scrollY={scrollY}
-        />
+      {/* CAD/CAM Section */}
+      <div className="relative z-10 py-12 px-4">
+        <div className="max-w-7xl mx-auto space-y-24">
+          {/* Service 1 - CAD Design */}
+          <ServiceCard
+            title="Servicio de Diseño CAD"
+            description="Realizamos el diseño digital de tus trabajos dentales (CAD) a partir de los archivos que nos envíes."
+            features={[
+              "100% digital y remoto",
+              "Disponible para cualquier parte del mundo",
+              "Trabajo únicamente con envío de archivos",
+              "Precisión y calidad garantizada",
+            ]}
+            imagePosition="left"
+            imageSrc={designCadImage}
+          />
+
+          {/* Service 2 - CAD/CAM Integral */}
+          <ServiceCard
+            title="Servicio Integral CAD/CAM"
+            description="Además del diseño, nos encargamos de la terminación completa de las piezas mediante tecnología CAD/CAM."
+            features={[
+              "Diseño digital completo",
+              "Fabricación con tecnología CAM",
+              "Terminación y acabado profesional",
+              "Trabajo listo para entregar al paciente",
+            ]}
+            imagePosition="right"
+            imageSrc={cadVideo}
+            isVideo={true}
+          />
+        </div>
+      </div>
+
+      {/* More Services Section */}
+      <div className="relative z-10 py-12 px-4 bg-[#0d3872]/50">
+        <div className="max-w-7xl mx-auto text-center mb-12">
+          <h2 className="text-4xl font-bold text-white mb-4">Más Servicios</h2>
+          <p className="text-xl text-blue-100">Descubre nuestra gama completa de servicios dentales</p>
+        </div>
+        <div className="p-3">
+          <ServicesContent
+            services={serviceJson}
+            hoveredIndex={hoveredIndex}
+            setHoveredIndex={setHoveredIndex}
+            scrollY={scrollY}
+          />
+        </div>
       </div>
     </div>
   )

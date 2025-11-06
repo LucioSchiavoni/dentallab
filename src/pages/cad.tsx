@@ -1,10 +1,10 @@
 import { ServiceCard } from "@/components/service-card"
 import designCadImage from "@/assets/design-cad.png"
-import cadCamImage from "@/assets/cad-cam.jpg"
+import cadVideo from "@/assets/cam-dentallab.mp4"
 
 const CadPage = () => {
   return (
-    <div className="min-h-screen  bg-[#0a2f60] ">
+    <div id="modalidades" className="min-h-screen  bg-[#0a2f60] ">
       {/* Hero Section */}
       <section className="py-16 px-4 md:py-24">
         <div className="max-w-7xl mx-auto text-center">
@@ -19,7 +19,7 @@ const CadPage = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-12 px-4">
+      <section  className="py-12 px-4">
         <div className="max-w-7xl mx-auto space-y-24">
           {/* Service 1 - CAD Design */}
           <ServiceCard
@@ -46,7 +46,8 @@ const CadPage = () => {
               "Trabajo listo para entregar al paciente",
             ]}
             imagePosition="right"
-            imageSrc={cadCamImage}
+            imageSrc={cadVideo}
+            isVideo={true}
           />
         </div>
       </section>
