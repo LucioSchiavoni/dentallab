@@ -43,7 +43,6 @@ const CadPage = () => {
               "Diseño digital completo",
               "Fabricación con tecnología CAM",
               "Terminación y acabado profesional",
-              "Trabajo listo para entregar al paciente",
             ]}
             imagePosition="right"
             imageSrc={cadVideo}
